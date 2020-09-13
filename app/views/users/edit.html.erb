@@ -1,0 +1,20 @@
+<div class="edit_contents" >
+	<h1>User info</h1>
+
+	<%= render 'layouts/error',object:@user %>
+
+	<%= form_for(@user) do |f| %>
+	<div>
+		<label>Name</label>
+		<%= f.text_field :name %>
+		<span></span>
+	</div>
+	<div>
+		<label>Image</label>
+		<%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "user-edit-form" %>
+	</div>
+	<label>Introduction</label>
+	<%= f.text_area :introduction %><br>
+	<%= f.submit "Update User" %>
+	<% end %>
+</div>

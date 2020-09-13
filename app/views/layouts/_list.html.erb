@@ -1,0 +1,31 @@
+<%= render 'layouts/error',object:book %>
+
+<h2>User info</h2>
+<table class="table table-striped">
+  <tbody>
+    <div> <%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %></div>
+    <tr>
+      <th>name</th>
+      <th><%= user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
+<% if user.id != current_user.id %>
+  <%= link_to "", user_path(current_user),class:"glyphicon glyphicon-wrench col-xs-12 btn btn-default" %>
+<% else %>
+  <%= link_to "",edit_user_path(user),class:"glyphicon glyphicon-wrench col-xs-12 btn btn-default" %>
+<% end %>
+
+<h2>New book</h2>
+<%= form_for(book) do |f| %>
+
+<h4>Title</h4>
+<%= f.text_field :title ,class:"col-xs-12"%>
+<h4>Opinion</h4>
+<%= f.text_area :body ,class:"col-xs-12" %>
+<%= f.submit 'Create Book',class:"col-xs-12 btn btn-default" %>
+<% end %>
